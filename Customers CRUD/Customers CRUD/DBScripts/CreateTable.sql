@@ -13,7 +13,7 @@
 	CREATE TABLE [User] (	[ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 							[Name] VARCHAR(255) NOT NULL,
 							[Email] VARCHAR(255) NOT NULL,
-							[Adress] VARCHAR(255) NOT NULL,
+							[Address] VARCHAR(255) NOT NULL,
 							[CityID] INT FOREIGN KEY REFERENCES City(ID),
 							[Country] VARCHAR(255)
                      );
