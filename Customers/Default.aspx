@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Customer CRUD</title>
     <link href="CSS/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
@@ -13,7 +13,7 @@
         <div>
 
 
-
+            <a href="AddNewCustomer.aspx">Add New Customer</a>
             <asp:Repeater ID="rptUsers" runat="server">
 
                 <HeaderTemplate>
@@ -46,7 +46,7 @@
                         <%# DataBinder.Eval(Container.DataItem, "Country") %>
                         </td>
                         <td>
-                            <a href="Edit.aspx">Edit</a>
+                            <a href="EditCustomer.aspx">Edit Customer</a>
                         </td>
                     </tr>
                 </ItemTemplate>
