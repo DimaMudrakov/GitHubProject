@@ -13,13 +13,15 @@ public partial class EditCustomer : System.Web.UI.Page
         {
             var context = new CustomersEntities();
 
+            string ID = Request.QueryString["ID"];
+            int UserID = int.Parse(ID);
+
+
             ddlCity.DataSource = context.City.ToList();
             ddlCity.DataValueField = "ID";
             ddlCity.DataTextField = "Name";
             ddlCity.DataBind();
 
-            string ID = Request.QueryString["ID"];
-            int UserID = int.Parse(ID);
 
             var user = context.User.Where(Name => Name.ID == UserID);
 
@@ -31,6 +33,12 @@ public partial class EditCustomer : System.Web.UI.Page
                 txtCountry.Text = userData.Country;
                 txtEmail.Text = userData.Email;
                 txtName.Text = userData.Name;
+
+                var cityID = userData.CityID;
+                string idCity = cityID.ToString();
+
+                ddlCity.SelectedValue = idCity;
+
                 txtName.DataBind();
 
             }
