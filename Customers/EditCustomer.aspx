@@ -10,8 +10,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-     <asp:Label AssociatedControlID="txtName" runat="server">Name</asp:Label>
-            <asp:TextBox id="txtName" runat="server"></asp:TextBox>
+            <asp:Label AssociatedControlID="txtName" runat="server">Name</asp:Label>
+            <asp:TextBox id="txtName" runat="server" Text=""></asp:TextBox>
 
             <asp:Label AssociatedControlID="txtEmail" runat="server">Email address</asp:Label>
             <asp:TextBox id="txtEmail" runat="server"></asp:TextBox>
@@ -25,7 +25,7 @@
             <asp:Label AssociatedControlID="txtCountry" runat="server">Country</asp:Label>
             <asp:TextBox runat="server" ID="txtCountry"></asp:TextBox>
 
-            <asp:Label AssociatedControlID="btnAddNewCustomer" runat="server"></asp:Label>
+            <asp:Label AssociatedControlID="btnEditCustomer" runat="server"></asp:Label>
             <asp:Button runat="server" ID="btnEditCustomer" Text="Edit Customer" OnClick="btnEditCustomer_Click"/>
 
             <a href="Default.aspx">Cancel</a>

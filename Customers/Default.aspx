@@ -13,7 +13,7 @@
         <div>
 
 
-            <a href="AddNewCustomer.aspx">Add New Customer</a>
+            <asp:Button runat="server" Text="Add New Customer" ID="btnAddNewCustomer" OnClick="btnAddNewCustomer_Click"></asp:Button>
             <asp:Repeater ID="rptUsers" runat="server">
 
                 <HeaderTemplate>
@@ -27,7 +27,6 @@
                             <th>Action</th>
                         </tr>
                 </HeaderTemplate>
-                
                 <ItemTemplate>
                     <tr>
                         <td>
@@ -43,10 +42,10 @@
                         <%# DataBinder.Eval(Container.DataItem, "City.Name") %>
                         </td>
                         <td>
-                        <%# DataBinder.Eval(Container.DataItem, "Country") %>
+                            <%# DataBinder.Eval(Container.DataItem, "Country") %>
                         </td>
                         <td>
-                            <a href="EditCustomer.aspx">Edit Customer</a>
+                            <a href="EditCustomer.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "ID") %>">Edit Customer</a>
                         </td>
                     </tr>
                 </ItemTemplate>
