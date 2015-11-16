@@ -9,12 +9,15 @@ public partial class Edit : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        var context = new CustomersEntities();
+        if (!IsPostBack)
+        {
+            var context = new CustomersEntities();
 
-        ddlCity.DataSource = context.City.ToList();
-        ddlCity.DataValueField = "ID";
-        ddlCity.DataTextField = "Name";
-        ddlCity.DataBind();
+            ddlCity.DataSource = context.City.ToList();
+            ddlCity.DataValueField = "ID";
+            ddlCity.DataTextField = "Name";
+            ddlCity.DataBind();
+        }
 
     }
 

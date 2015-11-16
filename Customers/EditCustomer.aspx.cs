@@ -11,4 +11,9 @@ public partial class EditCustomer : System.Web.UI.Page
     {
 
     }
+
+    protected void btnEditCustomer_Click(object sender, EventArgs e)
+    {
+
+    }
 }
