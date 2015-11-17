@@ -11,50 +11,30 @@
 <body>
     <form id="form1" runat="server">
         <div>
-
-
-            <asp:Button runat="server" Text="Add New Customer" ID="btnAddNewCustomer" OnClick="btnAddNewCustomer_Click"></asp:Button>
-            <asp:Repeater ID="rptUsers" runat="server">
-
-                <HeaderTemplate>
-                    <table>
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>Action</th>
-                        </tr>
-                </HeaderTemplate>
-                <ItemTemplate>
-                    <tr>
-                        <td>
-                        <%# DataBinder.Eval(Container.DataItem, "Name") %>
-                        </td>
-                        <td>
-                        <%# DataBinder.Eval(Container.DataItem, "Email") %>
-                        </td>
-                        <td>
-                        <%# DataBinder.Eval(Container.DataItem, "Address") %>
-                        </td>
-                        <td>
-                        <%# DataBinder.Eval(Container.DataItem, "City.Name") %>
-                        </td>
-                        <td>
-                            <%# DataBinder.Eval(Container.DataItem, "Country") %>
-                        </td>
-                        <td>
-                            <a href="EditCustomer.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "ID") %>">Edit Customer</a>
-                        </td>
-                    </tr>
-                </ItemTemplate>
-
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
-
+                <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomer_Click"></asp:Button>
+            <asp:GridView ID="grvCustomers" CssClass="Grid" runat="server" AutoGenerateColumns="false"
+                PageSize="10" AllowPaging="true" AllowSorting="false" DataSourceID="dsCustomers">
+                <Columns>
+                    <asp:BoundField DataField="User.Name" HeaderText="Customer Name" />
+                    <asp:BoundField DataField="User.Email" HeaderText="Email" />
+                    <asp:BoundField DataField="User.Address" HeaderText="Address" />
+                    <asp:TemplateField HeaderText="City">
+                        <ItemTemplate>
+                                <%# DataBinder.Eval(Container.DataItem, "City.Name") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>  
+                    <asp:BoundField DataField="User.Country" HeaderText="Country" />
+                    <asp:TemplateField HeaderText="Action">
+                        <ItemTemplate>
+                                <a class="linkPageDefault" href="EditCustomer.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "User.ID") %>">Edit Customer</a>
+                        </ItemTemplate>
+                    </asp:TemplateField>    
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="dsCustomers" runat="server" EnablePaging="true" SelectMethod="GetCustomers"
+                SelectCountMethod="GetCustomersCount" TypeName="CustomerDS" MaximumRowsParameterName="maxRows"
+                StartRowIndexParameterName="startIndex">
+            </asp:ObjectDataSource>
         </div>
     </form>
 </body>

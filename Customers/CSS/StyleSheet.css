@@ -2,6 +2,10 @@
 }
 table{
     border:1px solid black;
+    border-radius: 4px;
+}
+tbody{
+    border-radius: 4px;
 }
 tr{
     border:1px solid black;
@@ -11,4 +15,63 @@ td{
 }
 th{
     border:1px solid black;
+}
+.Grid{
+    margin: 0 auto;
+    font-family: cursive;
+    width: 60%;
+    height: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 4px;
+}
+.linkPageDefault{
+    text-decoration: none;
+    color: #168BE0;
+
+}
+.btnAddNewCustomerDefault{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 16%;
+    height: 100%;
+    font-size: 14pt;
+    cursor: pointer;
+    margin-left: 20%;
+}
+#btnAddNewCustomer{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 14%;
+    height: 100%;
+    font-size: 14pt;
+    cursor: pointer;
+}
+#btnEditCustomer{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 14%;
+    height: 100%;
+    font-size: 14pt;
+    cursor: pointer;
+}
+.linkPageAddNewCustomer{
+    text-decoration: none;
+    color: #19C88D;
+}
+.contanierForm{
+    margin-left: 38%;
+    margin-top: 2%;
+    width: 100%;
+    position: absolute;
+}
+.linkPageEditCustomer{
+    text-decoration: none;
+    color: #19C88D;
 }
