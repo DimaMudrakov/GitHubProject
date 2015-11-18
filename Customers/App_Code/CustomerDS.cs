@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public class CustomerDS
 {
     public Array GetCustomers(int startIndex, int maxRows, string sortColumn)
     {
+
 
         using (var context = new CustomersEntities())
         {
@@ -102,7 +105,7 @@ public class CustomerDS
             }
 
 
-            return (from User in context.User
+                return (from User in context.User
                         join City in context.City
                         on User.CityID equals City.ID
                         orderby User.ID
