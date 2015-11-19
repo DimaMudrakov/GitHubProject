@@ -10,8 +10,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomer_Click"></asp:Button>
+        <div id="mainPage">
+            <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomerDefault_Click"></asp:Button>
+            <div class="contanierSearchFields">
+                <div class="searchFieldByName">
+                    <asp:TextBox ID="txtSearchByName" runat="server" AutoPostBack="true" placeholder=" Search by Name"></asp:TextBox>
+                    <asp:Button ID="btntxtSearchByName" runat="server" Text="Search" />
+                </div>
+                <div class="searchFieldByCity">
+                    <asp:TextBox ID="txtSearchByCity" runat="server" AutoPostBack="true" placeholder=" Search by city"></asp:TextBox>
+                    <asp:Button ID="btnSearchByCity" runat="server" Text="Search" />
+                </div>
+                    <a id="linkCancelSearchByName" href="Default.aspx">Cancel</a>
+            </div>
             <asp:GridView ID="grvCustomers" CssClass="Grid" runat="server" AutoGenerateColumns="false"
                 PageSize="10" AllowPaging="true" AllowSorting="true" DataSourceID="dsCustomers">
                 <Columns>
@@ -27,29 +38,17 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <br>
-            Search by Name
-            <asp:TextBox ID="txtSearchByName" runat="server" AutoPostBack="true"></asp:TextBox>
-            <asp:Button ID="btntxtSearchByName" runat="server" Text="Search" />
-            <a href="Default.aspx">Cancel</a>
-            <br>
-            <br>
-            Search by city            
-            <asp:TextBox ID="txtSearchByCity" runat="server" AutoPostBack="true"></asp:TextBox>
-            <asp:Button ID="btnSearchByCity" runat="server" Text="Search" />
-            <a href="Default.aspx">Cancel</a>
-           
-             <asp:ObjectDataSource ID="dsCustomers" runat="server" EnablePaging="true" SelectMethod="GetCustomers"
+            <asp:ObjectDataSource ID="dsCustomers" runat="server" EnablePaging="true" SelectMethod="GetCustomers"
                 SelectCountMethod="GetCustomersCount" TypeName="CustomerDS" MaximumRowsParameterName="maxRows"
                 SortParameterName="sortColumn"
                 StartRowIndexParameterName="startIndex">
-                         <SelectParameters>
-                                    <asp:ControlParameter ControlID="txtSearchByName" Name="nameSearchString" PropertyName="Text"
-                                        Type="String" />
-                                    <asp:ControlParameter ControlID="txtSearchByCity" Name="citySearchString" PropertyName="Text"
-                                        Type="String" />
-                         </SelectParameters>
-             </asp:ObjectDataSource>
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="txtSearchByName" Name="nameSearchString" PropertyName="Text"
+                        Type="String" />
+                    <asp:ControlParameter ControlID="txtSearchByCity" Name="citySearchString" PropertyName="Text"
+                        Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </div>
     </form>
 </body>

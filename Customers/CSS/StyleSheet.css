@@ -1,11 +1,18 @@
-﻿body {
+﻿body{
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+#mainPage{
+    margin: 0 auto;
+    width: 1200px;
+    height: auto; 
 }
 table{
-    border:1px solid black;
-    border-radius: 4px;
-}
-tbody{
-    border-radius: 4px;
+    margin: 0 auto;
 }
 tr{
     border:1px solid black;
@@ -14,7 +21,11 @@ td{
     border:1px solid black;
 }
 th{
-    border:1px solid black;
+    color: #168BE0;
+}
+th a {
+    text-decoration: none;
+    color: #168BE0;
 }
 .Grid{
     margin: 0 auto;
@@ -24,6 +35,8 @@ th{
     border-collapse: collapse;
     text-align: center;
     border-radius: 4px;
+    background-color: white;
+    margin-top: 1%;
 }
 .linkPageDefault{
     text-decoration: none;
@@ -35,43 +48,126 @@ th{
     color: white;
     border: none;
     border-radius: 5px;
-    width: 16%;
     height: 100%;
     font-size: 14pt;
     cursor: pointer;
+    margin-top: 10%;
     margin-left: 20%;
-}
-#btnAddNewCustomer{
+}   
+.btnAddNewCustomer{
     background-color: #19C88D;
     color: white;
     border: none;
     border-radius: 5px;
-    width: 14%;
     height: 100%;
     font-size: 14pt;
     cursor: pointer;
+    margin-top: 4%;
 }
 #btnEditCustomer{
     background-color: #19C88D;
     color: white;
     border: none;
     border-radius: 5px;
-    width: 14%;
     height: 100%;
     font-size: 14pt;
     cursor: pointer;
+    margin-top: 3%;
+    margin-left: 15%;
 }
 .linkPageAddNewCustomer{
     text-decoration: none;
     color: #19C88D;
+    font-weight: bolder;
+    margin-left: 3%;
 }
 .contanierForm{
     margin-left: 38%;
     margin-top: 2%;
-    width: 100%;
     position: absolute;
 }
 .linkPageEditCustomer{
     text-decoration: none;
     color: #19C88D;
+    font-weight: bolder;
+    margin-left: 3%;
+}
+#btntxtSearchByName{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 14pt;
+    cursor: pointer;
+}
+#txtSearchByCity{
+    margin-bottom: 3%;
+}
+#btnSearchByCity{
+        background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 14pt;
+    cursor: pointer;
+}
+#linkCancelSearchByName{
+    text-decoration: none;
+    color: #19C88D;
+}
+.contanierSearchFields{
+    float: right;
+    text-align: center;
+    margin-top: 5%;
+
+}
+.searchFieldByCity{
+    margin-top: 2%;
+}
+#txtName{
+    margin-left: 58px;
+    color: #19C88D;
+}
+#txtEmail{
+    margin-left: 6px;
+    color: #19C88D;
+}
+#txtAddress{
+    margin-left: 43px;
+    color: #19C88D;
+}
+#txtCountry{
+    margin-left: 42px;
+    color: #19C88D;
+}
+#ddlCity{
+    margin-left: 67px;
+    color: #19C88D;
+    font-weight: bolder;
+}
+.FieldEmail{
+    margin-top: 2%;
+}
+.FieldAddress{
+    margin-top: 2%;
+}
+.FieldDdlCity{
+    margin-top: 2%;
+}
+.FieldCountry{
+    margin-top: 2%;
+}
+label{
+    color: #168BE0;
+}
+#lblWrongEmail{
+    color: red;
+}
+.containerForWrongLabel{
+    margin-top: 5%;
+    margin-left: 8%;
+    font-size: 22pt;
+    font-weight: bolder;
 }
