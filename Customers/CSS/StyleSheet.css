@@ -53,6 +53,9 @@ th a {
     cursor: pointer;
     margin-top: 10%;
     margin-left: 20%;
+}
+.btnAddNewCustomerDefault:hover{
+     background: rgb(53, 167, 110);
 }   
 .btnAddNewCustomer{
     background-color: #19C88D;
@@ -63,6 +66,9 @@ th a {
     font-size: 16pt;
     cursor: pointer;
     margin-top: 4%;
+}
+.btnAddNewCustomer:hover{
+     background: rgb(53, 167, 110);
 }
 #btnEditCustomer{
     background-color: #19C88D;
@@ -75,6 +81,9 @@ th a {
     margin-top: 3%;
     margin-left: 15%;
 }
+#btnEditCustomer:hover{
+     background: rgb(53, 167, 110);
+}
 #btnSearch{
     background-color: #19C88D;
     color: white;
@@ -84,12 +93,20 @@ th a {
     font-size: 16pt;
     cursor: pointer;
 }
+#btnSearch:hover{
+     background: rgb(53, 167, 110);
+}
 .linkPageAddNewCustomer{
     text-decoration: none;
     color: #19C88D;
     font-weight: bolder;
     margin-left: 3%;
     font-size: 16pt;
+}
+.linkPageAddNewCustomer:hover{
+    transition: 1s linear;
+    background-position: -600px -550px;
+    transform: rotate(360deg);
 }
 .contanierForm{
     margin-left: 38%;
@@ -102,6 +119,11 @@ th a {
     font-weight: bolder;
     margin-left: 3%;
     font-size: 16pt;
+}
+.linkPageEditCustomer:hover{
+    transition: 1s linear;
+    background-position: -600px -550px;
+    transform: rotate(360deg);
 }
 #txtSearchByCity{
     margin-bottom: 3%;
@@ -163,8 +185,13 @@ label{
 .searchFieldByCity{
     margin-top: 2%;
 }
-#linkCancelSearchByName{
+#linkCancelSearchByName {
     text-decoration: none;
     color: #19C88D;
     font-size: 16pt;
+}
+#linkCancelSearchByName:hover{
+    transition: 1s linear;
+    background-position: -600px -550px;
+    transform: rotate(360deg);
 }

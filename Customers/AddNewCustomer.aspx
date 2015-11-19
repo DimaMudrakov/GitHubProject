@@ -8,6 +8,7 @@
     <title>Add New Customer</title>
     <link href="CSS/StyleSheet.css" rel="stylesheet" />
     <script src="lib/jquery/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="js/JavaScript.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
