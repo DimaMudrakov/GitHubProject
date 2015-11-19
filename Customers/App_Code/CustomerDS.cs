@@ -18,8 +18,11 @@ public class CustomerDS
 
         using (var context = new CustomersEntities())
         {
-
-            if (!String.IsNullOrWhiteSpace(nameSearchString))
+            if (!String.IsNullOrWhiteSpace(citySearchString) && !String.IsNullOrWhiteSpace(nameSearchString))
+            {
+                return searchByNameAndByCity(thisStartIndex, thisMaxRows, thisSortColumn, thisSearchStringCity, thisSearchString);
+            }
+            else if (!String.IsNullOrWhiteSpace(nameSearchString))
             {
               return searchByName(thisStartIndex, thisMaxRows, thisSortColumn, thisSearchString);
               
@@ -28,7 +31,6 @@ public class CustomerDS
             {
                 return searchByCity(thisStartIndex, thisMaxRows, thisSortColumn, thisSearchStringCity);
             }
-        
 
         else if (sortColumn == "User.Name")
         {
@@ -138,7 +140,16 @@ public class CustomerDS
     {
         using (var context = new CustomersEntities())
         {
-            if (!String.IsNullOrWhiteSpace(nameSearchString))
+            if (!String.IsNullOrWhiteSpace(nameSearchString) && !String.IsNullOrWhiteSpace(citySearchString))
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User.City })
+                           .Count();
+            }
+            else if (!String.IsNullOrWhiteSpace(nameSearchString))
             {
                 return (from User in context.User
                         where User.Name.Contains(nameSearchString)
@@ -391,5 +402,121 @@ public class CustomerDS
                        .Skip(startIndex).Take(maxRows).ToArray();
         }
 
+    }
+
+    public Array searchByNameAndByCity(int startIndex, int maxRows, string sortColumn, string citySearchString, string nameSearchString)
+    {
+        using (var context = new CustomersEntities())
+        {
+            if (sortColumn == "User.Name")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Name
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Name DESC")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Name descending
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Email")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Email
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                                .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Email DESC")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Email descending
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Address")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Address
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                                  .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Address DESC")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Address descending
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "City.Name")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby City.Name
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                                  .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "City.Name DESC")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby City.Name descending
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Country")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Country
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                                  .Skip(startIndex).Take(maxRows).ToArray();
+            }
+            else if (sortColumn == "User.Country DESC")
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        orderby User.Country descending
+                        where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                        select new { User, City })
+                        .Skip(startIndex).Take(maxRows).ToArray();
+            }
+
+
+            return (from User in context.User
+                    join City in context.City
+                    on User.CityID equals City.ID
+                    orderby User.ID
+                    where City.Name.Contains(citySearchString) && User.Name.Contains(nameSearchString)
+                    select new { User, City })
+                       .Skip(startIndex).Take(maxRows).ToArray();
+        }
     }
 }

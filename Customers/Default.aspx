@@ -15,14 +15,14 @@
         <div id="mainPage">
             <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomerDefault_Click"></asp:Button>
             <div class="contanierSearchFields">
-                    <div id="ClickForSearch">Click for search</div>
                 <div class="searchFieldByName">
                     <asp:TextBox ID="txtSearchByName" runat="server" AutoPostBack="true" placeholder=" Search by Name"></asp:TextBox>
                 </div>
                 <div class="searchFieldByCity">
                     <asp:TextBox ID="txtSearchByCity" runat="server" AutoPostBack="true" placeholder=" Search by city"></asp:TextBox>
                 </div>
-                    <a id="linkCancelSearchByName" href="Default.aspx">Cancel</a>
+                    <asp:Button runat="server" ID="btnSearch" Text="Search" />
+                    <a id="linkCancelSearchByName" href="Default.aspx">Reset</a>
             </div>
             <asp:GridView ID="grvCustomers" CssClass="Grid" runat="server" AutoGenerateColumns="false"
                 PageSize="10" AllowPaging="true" AllowSorting="true" DataSourceID="dsCustomers">

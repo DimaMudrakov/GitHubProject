@@ -29,7 +29,7 @@ th a {
 }
 .Grid{
     margin: 0 auto;
-    font-family: cursive;
+    font-family: initial;
     width: 60%;
     height: 100%;
     border-collapse: collapse;
@@ -49,7 +49,7 @@ th a {
     border: none;
     border-radius: 5px;
     height: 100%;
-    font-size: 14pt;
+    font-size: 16pt;
     cursor: pointer;
     margin-top: 10%;
     margin-left: 20%;
@@ -60,7 +60,7 @@ th a {
     border: none;
     border-radius: 5px;
     height: 100%;
-    font-size: 14pt;
+    font-size: 16pt;
     cursor: pointer;
     margin-top: 4%;
 }
@@ -70,16 +70,26 @@ th a {
     border: none;
     border-radius: 5px;
     height: 100%;
-    font-size: 14pt;
+    font-size: 16pt;
     cursor: pointer;
     margin-top: 3%;
     margin-left: 15%;
+}
+#btnSearch{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 16pt;
+    cursor: pointer;
 }
 .linkPageAddNewCustomer{
     text-decoration: none;
     color: #19C88D;
     font-weight: bolder;
     margin-left: 3%;
+    font-size: 16pt;
 }
 .contanierForm{
     margin-left: 38%;
@@ -91,24 +101,15 @@ th a {
     color: #19C88D;
     font-weight: bolder;
     margin-left: 3%;
+    font-size: 16pt;
 }
 #txtSearchByCity{
     margin-bottom: 3%;
 }
-#ClickForSearch{
-    background-color: #19C88D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 100%;
-    font-size: 14pt;
-    cursor: pointer;
-    width: 130%;
-}
 .contanierSearchFields{
     float: right;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 5%;
 
 }
 #txtName{
@@ -157,15 +158,13 @@ label{
     font-weight: bolder;
 }
 .searchFieldByName{
-    display: none;
     margin-top: 6%;
 }
 .searchFieldByCity{
-    display: none;
     margin-top: 2%;
 }
 #linkCancelSearchByName{
-    display: none;
     text-decoration: none;
     color: #19C88D;
+    font-size: 16pt;
 }
