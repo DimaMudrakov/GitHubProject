@@ -54,6 +54,8 @@
             <asp:Button runat="server" ID="btnEditCustomer" Text="Edit Customer" OnClick="btnEditCustomer_Click" />
 
             <a class="linkPageEditCustomer" href="Default.aspx">Cancel</a>
+            <asp:Label ID="lblWrongEmail" runat="server" AssociatedControlID="hdfWrongEmail" ></asp:Label>
+            <asp:HiddenField ID="hdfWrongEmail" runat="server" />
         </div>
     </form>
 </body>

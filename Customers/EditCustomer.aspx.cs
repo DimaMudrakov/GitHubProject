@@ -54,6 +54,7 @@ public partial class EditCustomer : System.Web.UI.Page
 
         if (CheckValidEmail(txtEmail.Text) == true)
         {
+            lblWrongEmail.Text = "";
             var context = new CustomersEntities();
 
             var customer = new User();
@@ -79,7 +80,7 @@ public partial class EditCustomer : System.Web.UI.Page
         }
         else if (CheckValidEmail(txtEmail.Text) == false)
         {
-            Response.Redirect("EditCustomer.aspx?ID=" + ID);
+            lblWrongEmail.Text = "Not valid email";
         }
         else
         {
@@ -100,5 +101,4 @@ public partial class EditCustomer : System.Web.UI.Page
         else
             return false;
     }
-
 }

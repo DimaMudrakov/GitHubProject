@@ -28,7 +28,8 @@ public partial class Edit : System.Web.UI.Page
 
         if (CheckValidEmail(txtEmail.Text) == true) {
 
-            var context = new CustomersEntities();
+           lblWrongEmail.Text = "";
+           var context = new CustomersEntities();
 
             User customer = new User();
 
@@ -42,10 +43,12 @@ public partial class Edit : System.Web.UI.Page
             User add = context.User.Add(customer);
 
             context.SaveChanges();
+            ClearInputs();
+
         }
         else if(CheckValidEmail(txtEmail.Text) == false)
         {
-            Response.Redirect("AddNewCustomer.aspx");
+            lblWrongEmail.Text = "Not valid email";
         }
         else
         {
@@ -65,6 +68,15 @@ public partial class Edit : System.Web.UI.Page
             return true;
         else
             return false;
+    }
+    private void ClearInputs()
+    {
+        txtName.Text = string.Empty;
+        txtEmail.Text = string.Empty;
+        txtAddress.Text = string.Empty;
+        ddlCity.SelectedIndex = 0 ;
+        txtCountry.Text = string.Empty;
+
     }
 
 

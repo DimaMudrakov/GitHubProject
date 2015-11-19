@@ -138,6 +138,23 @@ public class CustomerDS
     {
         using (var context = new CustomersEntities())
         {
+            if (!String.IsNullOrWhiteSpace(nameSearchString))
+            {
+                return (from User in context.User
+                        where User.Name.Contains(nameSearchString)
+                        select User)
+                           .Count();
+            }
+            else if (!String.IsNullOrWhiteSpace(citySearchString))
+            {
+                return (from User in context.User
+                        join City in context.City
+                        on User.CityID equals City.ID
+                        where City.Name.Contains(citySearchString)
+                        select new { User.City })
+                           .Count();
+            }
+
             return context.User.Count();
         }
     }
