@@ -92,7 +92,10 @@ th a {
     font-weight: bolder;
     margin-left: 3%;
 }
-#btntxtSearchByName{
+#txtSearchByCity{
+    margin-bottom: 3%;
+}
+#ClickForSearch{
     background-color: #19C88D;
     color: white;
     border: none;
@@ -100,31 +103,13 @@ th a {
     height: 100%;
     font-size: 14pt;
     cursor: pointer;
-}
-#txtSearchByCity{
-    margin-bottom: 3%;
-}
-#btnSearchByCity{
-        background-color: #19C88D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 100%;
-    font-size: 14pt;
-    cursor: pointer;
-}
-#linkCancelSearchByName{
-    text-decoration: none;
-    color: #19C88D;
+    width: 130%;
 }
 .contanierSearchFields{
     float: right;
     text-align: center;
-    margin-top: 5%;
-
-}
-.searchFieldByCity{
     margin-top: 2%;
+
 }
 #txtName{
     margin-left: 58px;
@@ -170,4 +155,17 @@ label{
     margin-left: 8%;
     font-size: 22pt;
     font-weight: bolder;
+}
+.searchFieldByName{
+    display: none;
+    margin-top: 6%;
+}
+.searchFieldByCity{
+    display: none;
+    margin-top: 2%;
+}
+#linkCancelSearchByName{
+    display: none;
+    text-decoration: none;
+    color: #19C88D;
 }

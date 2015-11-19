@@ -7,19 +7,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Customer CRUD</title>
     <link href="CSS/StyleSheet.css" rel="stylesheet" />
+    <script  src="lib/jquery/jquery-1.11.3.min.js"></script>
+    <script src="js/JavaScript.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div id="mainPage">
             <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomerDefault_Click"></asp:Button>
             <div class="contanierSearchFields">
+                    <div id="ClickForSearch">Click for search</div>
                 <div class="searchFieldByName">
                     <asp:TextBox ID="txtSearchByName" runat="server" AutoPostBack="true" placeholder=" Search by Name"></asp:TextBox>
-                    <asp:Button ID="btntxtSearchByName" runat="server" Text="Search" />
                 </div>
                 <div class="searchFieldByCity">
                     <asp:TextBox ID="txtSearchByCity" runat="server" AutoPostBack="true" placeholder=" Search by city"></asp:TextBox>
-                    <asp:Button ID="btnSearchByCity" runat="server" Text="Search" />
                 </div>
                     <a id="linkCancelSearchByName" href="Default.aspx">Cancel</a>
             </div>
