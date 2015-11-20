@@ -52,7 +52,7 @@
 
             <a class="linkPageAddNewCustomer" href="Default.aspx">Cancel</a>
             <div class="containerForWrongLabel">
-                <asp:Label ID="lblWrongEmail" runat="server" AssociatedControlID="hdfWrongEmail" ></asp:Label>
+                <asp:Label ID="lblInformLabel" runat="server" AssociatedControlID="hdfWrongEmail" ></asp:Label>
                 <asp:HiddenField ID="hdfWrongEmail" runat="server" />
             </div>
 

@@ -79,10 +79,24 @@ th a {
     font-size: 16pt;
     cursor: pointer;
     margin-top: 3%;
-    margin-left: 15%;
+    margin-left: 3%;
+}
+#btnDeleteCustomer{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 16pt;
+    cursor: pointer;
+    margin-left: 3%;
+    margin-top: 1%;
+}
+#btnDeleteCustomer:hover{
+    background: rgb(53, 167, 110);
 }
 #btnEditCustomer:hover{
-     background: rgb(53, 167, 110);
+    background: rgb(53, 167, 110);
 }
 #btnSearch{
     background-color: #19C88D;

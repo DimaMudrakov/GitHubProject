@@ -28,7 +28,7 @@ public partial class Edit : System.Web.UI.Page
 
         if (CheckValidEmail(txtEmail.Text) == true) {
 
-           lblWrongEmail.Text = "";
+           lblInformLabel.Text = "";
            var context = new CustomersEntities();
 
             User customer = new User();
@@ -44,19 +44,19 @@ public partial class Edit : System.Web.UI.Page
 
             context.SaveChanges();
             ClearInputs();
+            lblInformLabel.Text = "Customer Add";
+            lblInformLabel.ForeColor = System.Drawing.Color.FromArgb(22, 139, 224);
 
         }
         else if(CheckValidEmail(txtEmail.Text) == false)
         {
-            lblWrongEmail.Text = "Not valid email";
+            lblInformLabel.Text = "Not valid email";
+            lblInformLabel.ForeColor = System.Drawing.Color.Red;
         }
         else
         {
             Response.Redirect("Default.aspx");
         }
-
-
-
 
     }
     protected bool CheckValidEmail (string Email)

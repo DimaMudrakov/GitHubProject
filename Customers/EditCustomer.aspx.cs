@@ -54,7 +54,7 @@ public partial class EditCustomer : System.Web.UI.Page
 
         if (CheckValidEmail(txtEmail.Text) == true)
         {
-            lblWrongEmail.Text = "";
+            lblInformLabel.Text = "";
             var context = new CustomersEntities();
 
             var customer = new User();
@@ -76,11 +76,13 @@ public partial class EditCustomer : System.Web.UI.Page
             entry.Property(u => u.ID).IsModified = false;
 
             context.SaveChanges();
-
+            lblInformLabel.Text = "Save changes";
+            lblInformLabel.ForeColor = System.Drawing.Color.FromArgb(22, 139, 224);
         }
         else if (CheckValidEmail(txtEmail.Text) == false)
         {
-            lblWrongEmail.Text = "Not valid email";
+            lblInformLabel.Text = "Not valid email";
+            lblInformLabel.ForeColor = System.Drawing.Color.Red;
         }
         else
         {
@@ -100,5 +102,31 @@ public partial class EditCustomer : System.Web.UI.Page
             return true;
         else
             return false;
+    }
+
+    protected void btnDeleteCustomer_Click(object sender, EventArgs e)
+    {
+        string ID = Request.QueryString["ID"];
+        int UserID = int.Parse(ID);
+        var context = new CustomersEntities();
+
+        var employer = new User { ID = UserID };
+        context.User.Attach(employer);
+        context.User.Remove(employer);
+        context.SaveChanges();
+        ClearInputs();
+        lblInformLabel.Text = "Delete Customer";
+        lblInformLabel.ForeColor = System.Drawing.Color.FromArgb(22, 139, 224);
+
+
+    }
+    private void ClearInputs()
+    {
+        txtName.Text = string.Empty;
+        txtEmail.Text = string.Empty;
+        txtAddress.Text = string.Empty;
+        ddlCity.SelectedIndex = 0;
+        txtCountry.Text = string.Empty;
+
     }
 }

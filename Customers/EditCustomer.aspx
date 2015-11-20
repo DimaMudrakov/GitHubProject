@@ -49,10 +49,10 @@
 
             <asp:Label AssociatedControlID="btnEditCustomer" runat="server"></asp:Label>
             <asp:Button runat="server" ID="btnEditCustomer" Text="Save" OnClick="btnEditCustomer_Click" />
-
+            <asp:Button runat="server" ID="btnDeleteCustomer" Text="Delete" OnClick="btnDeleteCustomer_Click" />
             <a class="linkPageEditCustomer" href="Default.aspx">Cancel</a>
              <div class="containerForWrongLabel">
-                <asp:Label ID="lblWrongEmail" runat="server" AssociatedControlID="hdfWrongEmail" ></asp:Label>
+                <asp:Label ID="lblInformLabel" runat="server" AssociatedControlID="hdfWrongEmail" ></asp:Label>
                 <asp:HiddenField ID="hdfWrongEmail" runat="server" />
             </div>
         </div>
