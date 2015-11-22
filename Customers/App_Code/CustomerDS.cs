@@ -9,7 +9,6 @@ public class CustomerDS
 {
     public Array GetCustomers(int startIndex, int maxRows, string sortColumn, string nameSearchString, string citySearchString)
     {
-
         int thisStartIndex = startIndex;
         int thisMaxRows = maxRows;
         string thisSortColumn = sortColumn;

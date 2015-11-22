@@ -67,6 +67,19 @@ th a {
     cursor: pointer;
     margin-top: 4%;
 }
+#btnDeleteSelectedCustomer{
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 16pt;
+    cursor: pointer;
+    margin-top: 10%;
+}
+#btnDeleteSelectedCustomer:hover{
+     background: rgb(53, 167, 110);
+}
 .btnAddNewCustomer:hover{
      background: rgb(53, 167, 110);
 }

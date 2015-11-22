@@ -14,6 +14,7 @@
     <form id="form1" runat="server">
         <div id="mainPage">
             <asp:Button runat="server" Text=" + Add New Customer" CssClass="btnAddNewCustomerDefault" ID="btnAddNewCustomer" OnClick="btnAddNewCustomerDefault_Click"></asp:Button>
+            <asp:Button runat="server" Text=" Delete selected customer" value="sdv" ID="btnDeleteSelectedCustomer" OnClick="btnDeleteSelectedCustomer_Click" ></asp:Button>
             <div class="contanierSearchFields">
                 <div class="searchFieldByName">
                     <asp:TextBox ID="txtSearchByName" runat="server" AutoPostBack="true" placeholder=" Search by Name"></asp:TextBox>
@@ -27,6 +28,11 @@
             <asp:GridView ID="grvCustomers" CssClass="Grid" runat="server" AutoGenerateColumns="false"
                 PageSize="10" AllowPaging="true" AllowSorting="true" DataSourceID="dsCustomers">
                 <Columns>
+                    <asp:TemplateField HeaderText="ID" Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "User.ID") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="User.Name" HeaderText="Customer Name" SortExpression="User.Name" />
                     <asp:BoundField DataField="User.Email" HeaderText="Email" SortExpression="User.Email" />
                     <asp:BoundField DataField="User.Address" HeaderText="Address" SortExpression="User.Address" />
@@ -35,6 +41,11 @@
                     <asp:TemplateField HeaderText="Action">
                         <ItemTemplate>
                             <a class="linkPageDefault" href="EditCustomer.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "User.ID") %>">Edit Customer</a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Delete">
+                        <ItemTemplate >
+                            <asp:CheckBox runat="server" ID="chkDeleteCustomer" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

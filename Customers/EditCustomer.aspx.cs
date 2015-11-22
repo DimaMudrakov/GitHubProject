@@ -103,23 +103,6 @@ public partial class EditCustomer : System.Web.UI.Page
         else
             return false;
     }
-
-    protected void btnDeleteCustomer_Click(object sender, EventArgs e)
-    {
-        string ID = Request.QueryString["ID"];
-        int UserID = int.Parse(ID);
-        var context = new CustomersEntities();
-
-        var employer = new User { ID = UserID };
-        context.User.Attach(employer);
-        context.User.Remove(employer);
-        context.SaveChanges();
-        ClearInputs();
-        lblInformLabel.Text = "Delete Customer";
-        lblInformLabel.ForeColor = System.Drawing.Color.FromArgb(22, 139, 224);
-
-
-    }
     private void ClearInputs()
     {
         txtName.Text = string.Empty;
