@@ -10,7 +10,17 @@
 <body>
     <form id="form1" runat="server">
         <div>
-
+            <asp:FileUpload ID="fplFileUpload" runat="server" />
+            <br />
+            <br />
+            <asp:Button ID="btnSaveFile" runat="server" OnClick="btnSaveFile_Click" Text="Upload File" />
+            <asp:Button ID="btnReset" runat="server" OnClick="btnReset_Click" Text="Reset" />
+            <br />
+            <br />
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
+            <br />
+            <br />
+            <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" Columns="50" Rows="5" placeholder="Write a comment" MaxLength="200"></asp:TextBox>
         </div>
     </form>
 </body>
