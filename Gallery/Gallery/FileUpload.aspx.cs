@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Text;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +23,9 @@ namespace Gallery
             if (CheckFile() == true && CheckFileType() == true && CheckFileSize() == true)
             {
                 string fileName = Path.GetFileName(fplFileUpload.PostedFile.FileName);
-                fplFileUpload.PostedFile.SaveAs(Server.MapPath("/images/") + fileName);
+                string UUIDName = SHA1HashStringForUTF8String(fileName) + GenerateRandomNumber();
+
+                fplFileUpload.PostedFile.SaveAs(Server.MapPath("/images/") + UUIDName);
                 lblMessage.Text = "Image is uploaded";
             }
             else if (CheckFile() == false)
@@ -87,6 +91,38 @@ namespace Gallery
             {
                 return false;
             }
+        }
+        public static string SHA1HashStringForUTF8String(string imageName)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(imageName);
+
+            var sha1 = SHA1.Create();
+            byte[] hashBytes = sha1.ComputeHash(bytes);
+
+            return HexStringFromBytes(hashBytes);
+        }
+        public static string HexStringFromBytes(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                var hex = b.ToString("x2");
+                sb.Append(hex);
+            }
+            return sb.ToString();
+        }
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public string GenerateRandomNumber()
+        {
+            Random rnd = new Random();
+            int number = rnd.Next(120);
+            return RandomString(number);
         }
     }
 }
