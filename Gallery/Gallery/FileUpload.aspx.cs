@@ -17,15 +17,20 @@ namespace Gallery
 
         protected void btnSaveFile_Click(object sender, EventArgs e)
         {
-            if(CheckFile() == true)
+            
+            if(CheckFile() == true && CheckFileType() == true)
             {
                 string fileName = Path.GetFileName(fplFileUpload.PostedFile.FileName);
                 fplFileUpload.PostedFile.SaveAs(Server.MapPath("/images/") + fileName);
                 lblMessage.Text = "Image is uploaded";
             }
-            else
+            else if(CheckFile() == false)
             {
                 lblMessage.Text = "Image is not selected";
+            }
+            else if (CheckFileType() == false)
+            {
+                lblMessage.Text = "The wrong type of image";
             }
         }
 
@@ -38,6 +43,29 @@ namespace Gallery
             if (fplFileUpload.HasFile)
             {
                 return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        protected bool CheckFileType()
+        {
+            string[] validFileTypes = {  "png", "jpg", "jpeg" };
+            string ext = Path.GetExtension(fplFileUpload.PostedFile.FileName);
+            bool isValidFile = false;
+            for (int i = 0; i < validFileTypes.Length; i++)
+            {
+                if (ext == "." + validFileTypes[i])
+                {
+                    isValidFile = true;
+                    return true;
+                }
+            }
+            if (!isValidFile)
+            {
+                return false;
             }
             else
             {
