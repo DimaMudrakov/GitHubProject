@@ -17,20 +17,24 @@ namespace Gallery
 
         protected void btnSaveFile_Click(object sender, EventArgs e)
         {
-            
-            if(CheckFile() == true && CheckFileType() == true)
+
+            if (CheckFile() == true && CheckFileType() == true && CheckFileSize() == true)
             {
                 string fileName = Path.GetFileName(fplFileUpload.PostedFile.FileName);
                 fplFileUpload.PostedFile.SaveAs(Server.MapPath("/images/") + fileName);
                 lblMessage.Text = "Image is uploaded";
             }
-            else if(CheckFile() == false)
+            else if (CheckFile() == false)
             {
                 lblMessage.Text = "Image is not selected";
             }
             else if (CheckFileType() == false)
             {
                 lblMessage.Text = "The wrong type of image";
+            }
+            else if (CheckFileSize() == false)
+            {
+                lblMessage.Text = "Image size should not exceed 1 MB";
             }
         }
 
@@ -52,7 +56,7 @@ namespace Gallery
         }
         protected bool CheckFileType()
         {
-            string[] validFileTypes = {  "png", "jpg", "jpeg" };
+            string[] validFileTypes = { "png", "jpg", "jpeg", "PNG", "JPG", "JPEG" };
             string ext = Path.GetExtension(fplFileUpload.PostedFile.FileName);
             bool isValidFile = false;
             for (int i = 0; i < validFileTypes.Length; i++)
@@ -72,6 +76,17 @@ namespace Gallery
                 return false;
             }
 
+        }
+        protected bool CheckFileSize()
+        {
+            if (fplFileUpload.FileBytes.Length <= 1048576)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
