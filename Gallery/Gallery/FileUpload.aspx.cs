@@ -25,7 +25,9 @@ namespace Gallery
                 string fileName = Path.GetFileName(fplFileUpload.PostedFile.FileName);
                 string UUIDName = SHA1HashStringForUTF8String(fileName) + GenerateRandomNumber();
 
-                fplFileUpload.PostedFile.SaveAs(Server.MapPath("/images/") + UUIDName);
+                fplFileUpload.PostedFile.SaveAs(Server.MapPath("/ImageStorage/") + UUIDName);
+                InsertGallery(UUIDName);
+                InsertComment();
                 lblMessage.Text = "Image is uploaded";
             }
             else if (CheckFile() == false)
@@ -123,6 +125,39 @@ namespace Gallery
             Random rnd = new Random();
             int number = rnd.Next(120);
             return RandomString(number);
+        }
+        public void InsertGallery(string UUIDName)
+        {
+            var context = new GalleryEntities ();
+
+            Image image = new Image();
+
+            image.CreateTS = DateTime.Now;
+            image.BaseName = fplFileUpload.FileName;
+            image.UUIDName = UUIDName;
+            image.FileSize = fplFileUpload.FileBytes.Length;    
+
+            context.Image.Add(image);
+            context.SaveChanges();
+        }
+        public void InsertComment()
+        {
+            GalleryEntities context = new GalleryEntities();
+
+            Image image = new Image();
+
+            image =  context.Image.Last();
+            Comment comment = new Comment();
+
+           
+            comment.CreateTS = DateTime.Now;
+            comment.Imgtext = txtComment.Text;
+            comment.ImageSize = fplFileUpload.FileBytes.Length;
+            comment.ImageID = image.ID;
+            
+
+            context.Comment.Add(comment);
+            context.SaveChanges();
         }
     }
 }

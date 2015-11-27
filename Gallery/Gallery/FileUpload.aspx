@@ -20,7 +20,7 @@
             <asp:Label ID="lblMessage" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" Columns="50" Rows="5" placeholder="Write a comment" MaxLength="200"></asp:TextBox>
+            <asp:TextBox ID="txtComment" runat="server" TextMode="SingleLine"  placeholder="Write a comment" MaxLength="200"></asp:TextBox>
         </div>
     </form>
 </body>
