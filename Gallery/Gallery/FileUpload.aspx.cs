@@ -27,7 +27,6 @@ namespace Gallery
 
                 fplFileUpload.PostedFile.SaveAs(Server.MapPath("/ImageStorage/") + UUIDName);
                 InsertGallery(UUIDName);
-                InsertComment();
                 lblMessage.Text = "Image is uploaded";
             }
             else if (CheckFile() == false)
@@ -139,21 +138,21 @@ namespace Gallery
 
             context.Image.Add(image);
             context.SaveChanges();
+            int id = image.ID;
+            InsertComment(id);
         }
-        public void InsertComment()
+        public void InsertComment(int id)
         {
             GalleryEntities context = new GalleryEntities();
 
-            Image image = new Image();
-
-            image =  context.Image.Last();
             Comment comment = new Comment();
+            
 
            
             comment.CreateTS = DateTime.Now;
             comment.Imgtext = txtComment.Text;
             comment.ImageSize = fplFileUpload.FileBytes.Length;
-            comment.ImageID = image.ID;
+            comment.ImageID = id;
             
 
             context.Comment.Add(comment);
