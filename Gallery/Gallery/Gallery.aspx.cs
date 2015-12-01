@@ -14,20 +14,29 @@ namespace Gallery
         {
             if (!IsPostBack)
             {
-                
+
                 DisplayImage();
+
             }
+
         }
         public void DisplayImage()
         {
             var context = new GalleryEntities();
-            
-            rptImage.DataSource = context.Image.ToArray();
-            
+
+
+            var resultFromDataBase = (  from Image in context.Image
+                                        join Comment in context.Comment
+                                        on Image.ID equals Comment.ImageID
+                                        select new { Image, Comment }).ToArray();
+
+            rptImage.DataSource = resultFromDataBase;
+
             rptImage.DataBind();
-
-
-           
         }
+
     }
+
+
+
 }

@@ -12,7 +12,12 @@
         <div>
             <asp:Repeater runat="server" ID="rptImage">
                 <ItemTemplate>
-                    <asp:Image ID="imgGallery" ImageUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "UUIDName") %>' runat="server" Width="200px" Height="200px" />
+                    <asp:HyperLink ID="linkToImage" runat="server" NavigateUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>'>
+                        <asp:Label ID="lblIDImage" runat="server" Text='<%#"Image ID" +  DataBinder.Eval(Container.DataItem, "Image.ID") %>' ></asp:Label>
+                        <asp:Image ID="imgGallery" ImageUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>' runat="server" Width="200px" Height="200px" AlternateText="Image" />
+                    </asp:HyperLink>
+                    <asp:Label ID="lblIDImageInComment" runat="server" Text= '<%#"Comment to image with ID" + DataBinder.Eval(Container.DataItem, "Comment.ImageID") %>'></asp:Label>
+                    <asp:Label ID="lblComment" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Comment.Imgtext") %>'></asp:Label>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
