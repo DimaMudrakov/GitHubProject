@@ -23,7 +23,7 @@ namespace Gallery
             if (CheckFile() == true && CheckFileType() == true && CheckFileSize() == true)
             {
                 string fileName = Path.GetFileName(fplFileUpload.PostedFile.FileName);
-                string UUIDName = SHA1HashStringForUTF8String(fileName) + GenerateRandomNumber();
+                string UUIDName = SHA1HashStringForUTF8String(fileName) + GenerateRandomNumber() + ExtensionImage();
 
                 fplFileUpload.PostedFile.SaveAs(Server.MapPath("/ImageStorage/") + UUIDName);
                 InsertGallery(UUIDName);
@@ -81,6 +81,11 @@ namespace Gallery
                 return false;
             }
 
+        }
+        protected string ExtensionImage()
+        {
+            string ext = Path.GetExtension(fplFileUpload.PostedFile.FileName);
+            return ext;
         }
         protected bool CheckFileSize()
         {

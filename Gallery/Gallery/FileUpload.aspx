@@ -21,6 +21,9 @@
             <br />
             <br />
             <asp:TextBox ID="txtComment" runat="server" TextMode="SingleLine"  placeholder="Write a comment" MaxLength="200"></asp:TextBox>
+            <br />
+            <br />
+            <a href="Gallery.aspx">Go to Gallery</a>
         </div>
     </form>
 </body>

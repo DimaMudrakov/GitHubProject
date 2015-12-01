@@ -79,6 +79,7 @@
     <Content Include="CreateDBScripts\CreateDBGallery.sql" />
     <Content Include="CreateDBScripts\CreateTableForGallery.sql" />
     <Content Include="FileUpload.aspx" />
+    <Content Include="Gallery.aspx" />
     <Content Include="packages.config" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -117,6 +118,13 @@
     </Compile>
     <Compile Include="FileUpload.aspx.designer.cs">
       <DependentUpon>FileUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery.aspx.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gallery.aspx.designer.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Image.cs">
       <DependentUpon>Model1.tt</DependentUpon>
