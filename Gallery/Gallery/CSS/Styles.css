@@ -23,9 +23,25 @@
     display: inline-block;
     float: left;
     margin-top: 10pt;
-    margin-left: 150pt;
+    margin-left: 115pt;
+    border: 1px solid blue;
+    width: 20%;
+    text-align: center;
+    height: 100%;
 }
 
 #containerLinhGoBack {
     float: left;
+}
+
+#contanierUploadedDate {
+    display: inline-block;
+    margin-left: 80pt;
+    margin-top: 10pt;
+}
+
+#containerYourComment {
+    display: inline-block;
+    margin-left: 125pt;
+    margin-top: 10pt;
 }

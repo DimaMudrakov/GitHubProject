@@ -25,6 +25,12 @@
                         <div id="commentImageId">
                             <asp:Label ID="lblIDImageInComment" runat="server" Text='<%#"Comment to image with ID" + DataBinder.Eval(Container.DataItem, "Comment.ImageID") %>'></asp:Label>
                         </div>
+                        <div id="contanierUploadedDate">
+                            <asp:Label ID="lblDate" runat="server" Text='<%#"Date uploaded" + " " + " : " + " " + DataBinder.Eval(Container.DataItem, "Image.CreateTS") %>'></asp:Label>
+                        </div>
+                        <div id="containerYourComment">
+                            <asp:Label ID="lblYourComment" runat="server" Text="Your Comment"></asp:Label>
+                        </div>
                         <div id="containerComment">
                             <asp:Label ID="lblComment" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Comment.Imgtext") %>'></asp:Label>
                         </div>
