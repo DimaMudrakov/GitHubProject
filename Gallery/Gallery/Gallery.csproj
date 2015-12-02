@@ -78,6 +78,7 @@
   <ItemGroup>
     <Content Include="CreateDBScripts\CreateDBGallery.sql" />
     <Content Include="CreateDBScripts\CreateTableForGallery.sql" />
+    <Content Include="CSS\Styles.css" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Gallery.aspx" />
     <Content Include="packages.config" />

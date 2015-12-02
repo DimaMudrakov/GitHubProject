@@ -6,19 +6,35 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gallery</title>
+    <link href="CSS/Styles.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:Repeater runat="server" ID="rptImage">
                 <ItemTemplate>
-                    <asp:HyperLink ID="linkToImage" runat="server" NavigateUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>'>
-                        <asp:Label ID="lblIDImage" runat="server" Text='<%#"Image ID" +  DataBinder.Eval(Container.DataItem, "Image.ID") %>' ></asp:Label>
-                        <asp:Image ID="imgGallery" ImageUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>' runat="server" Width="200px" Height="200px" AlternateText="Image" />
-                    </asp:HyperLink>
-                    <asp:Label ID="lblIDImageInComment" runat="server" Text= '<%#"Comment to image with ID" + DataBinder.Eval(Container.DataItem, "Comment.ImageID") %>'></asp:Label>
-                    <asp:Label ID="lblComment" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Comment.Imgtext") %>'></asp:Label>
+                    <div id="containerImageAndComment">
+                        <div id="imageID">
+                            <asp:Label ID="lblIDImage" runat="server" Text='<%#"Image ID" +  DataBinder.Eval(Container.DataItem, "Image.ID") %>'></asp:Label>
+                        </div>
+                        <div id="containerImage">
+                            <asp:HyperLink ID="linkToImage" runat="server" NavigateUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>'>
+                                <asp:Image ID="imgGallery" ImageUrl='<%# "ImageStorage/" + DataBinder.Eval(Container.DataItem, "Image.UUIDName") %>' runat="server" Width="200px" Height="200px" AlternateText="Image" />
+                            </asp:HyperLink>
+                        </div>
+                        <div id="commentImageId">
+                            <asp:Label ID="lblIDImageInComment" runat="server" Text='<%#"Comment to image with ID" + DataBinder.Eval(Container.DataItem, "Comment.ImageID") %>'></asp:Label>
+                        </div>
+                        <div id="containerComment">
+                            <asp:Label ID="lblComment" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Comment.Imgtext") %>'></asp:Label>
+                        </div>
+                    </div>
                 </ItemTemplate>
+                <FooterTemplate>
+                    <div id="containerLinhGoBack">
+                        <asp:HyperLink ID="hplToFileUpload" NavigateUrl="~/FileUpload.aspx" runat="server">go back</asp:HyperLink>
+                    </div>
+                </FooterTemplate>
             </asp:Repeater>
         </div>
     </form>
