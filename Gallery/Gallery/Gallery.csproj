@@ -79,6 +79,7 @@
     <Content Include="CreateDBScripts\CreateDBGallery.sql" />
     <Content Include="CreateDBScripts\CreateTableForGallery.sql" />
     <Content Include="CSS\Styles.css" />
+    <Content Include="EditComment.aspx" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Gallery.aspx" />
     <Content Include="packages.config" />
@@ -112,6 +113,13 @@
   <ItemGroup>
     <Compile Include="Comment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EditComment.aspx.cs">
+      <DependentUpon>EditComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditComment.aspx.designer.cs">
+      <DependentUpon>EditComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="FileUpload.aspx.cs">
       <DependentUpon>FileUpload.aspx</DependentUpon>

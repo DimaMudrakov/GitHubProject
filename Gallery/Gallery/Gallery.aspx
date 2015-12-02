@@ -34,6 +34,9 @@
                         <div id="containerComment">
                             <asp:Label ID="lblComment" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Comment.Imgtext") %>'></asp:Label>
                         </div>
+                        <div id="containerLinkToEditComment">
+                            <a href="EditComment.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "Comment.ID") %>">Edit Comment</a>
+                        </div>
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>
