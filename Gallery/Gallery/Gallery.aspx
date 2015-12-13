@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Repeater runat="server" ID="rptImage">
+            <asp:Repeater runat="server" ID="rptImage" OnItemCommand="rptImage_ItemCommand">
                 <ItemTemplate>
                     <div id="containerImageAndComment">
                         <div id="imageID">
@@ -37,6 +37,7 @@
                         <div id="containerLinkToEditComment">
                             <a href="EditComment.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "Comment.ID") %>">Edit Comment</a>
                         </div>
+                        <asp:Button runat="server" Text="Delete image" CommandName="Delete" ID="btnDeleteImageAndComment"  OnClientClick="javascript:if(!confirm('Delete this image?'))return false;"  CommandArgument='<%#Eval("Image.ID") %>'></asp:Button>
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>
