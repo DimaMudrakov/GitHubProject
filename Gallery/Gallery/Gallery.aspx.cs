@@ -12,20 +12,73 @@ namespace Gallery
 {
     public partial class Gallery : System.Web.UI.Page
     {
+        protected GalleryEntities context = new GalleryEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-
+            {               
                 DisplayImage();
+            }
 
+        }
+        public void DisplayImage(int number)
+        {
+            GalleryEntities context = this.context;
+
+            if(number == 0)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.CreateTS ascending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
+            }
+            else if (number == 1)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.CreateTS descending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
+            }
+            else if (number == 2)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.FileSize ascending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
+            }
+            else if (number == 3)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.FileSize descending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
             }
 
         }
         public void DisplayImage()
         {
-            GalleryEntities context = new GalleryEntities();
+            GalleryEntities context = this.context;
 
 
             var resultFromDataBase = (from Image in context.Image
@@ -51,7 +104,7 @@ namespace Gallery
         }
         protected void DeleteComment(int ImageId)
         {
-            GalleryEntities context = new GalleryEntities();
+            GalleryEntities context = this.context;
 
             var query = (from Comment in context.Comment
                          where Comment.ImageID == ImageId
@@ -67,7 +120,7 @@ namespace Gallery
         }
         protected void DeleteImage(int ImageId)
         {
-            GalleryEntities context = new GalleryEntities();
+            GalleryEntities context = this.context;
 
             var query = (from Image in context.Image
                          where Image.ID == ImageId
@@ -85,6 +138,12 @@ namespace Gallery
         protected void DeleteFile(string UUIDName)
         {
             File.Delete(Server.MapPath("/ImageStorage/") + UUIDName);
+        }
+
+        protected void btnSort_Click(object sender, EventArgs e)
+        {
+            int number = int.Parse(ddlSort.SelectedValue);
+            DisplayImage(number);
         }
     }
 

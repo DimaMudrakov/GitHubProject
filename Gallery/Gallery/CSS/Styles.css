@@ -45,3 +45,7 @@
     margin-left: 125pt;
     margin-top: 10pt;
 }
+#containerFilesize{
+    float: left;
+    margin-left: 22%;
+}

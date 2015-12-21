@@ -11,6 +11,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:DropDownList runat="server" ID="ddlSort">
+                <asp:ListItem Text="ascending upload date" Value="0"></asp:ListItem>
+                <asp:ListItem Text="descending upload date" Value="1"></asp:ListItem>
+                <asp:ListItem Text="ascending size image" Value="2"></asp:ListItem>
+                <asp:ListItem Text="descending size image" Value="3"></asp:ListItem>
+            </asp:DropDownList>
+            <asp:Button runat="server" ID="btnSort" Text="sort" OnClick="btnSort_Click" />
             <asp:Repeater runat="server" ID="rptImage" OnItemCommand="rptImage_ItemCommand">
                 <ItemTemplate>
                     <div id="containerImageAndComment">
@@ -28,6 +35,9 @@
                         <div id="contanierUploadedDate">
                             <asp:Label ID="lblDate" runat="server" Text='<%#"Date uploaded" + " " + " : " + " " + DataBinder.Eval(Container.DataItem, "Image.CreateTS") %>'></asp:Label>
                         </div>
+                        <div id="containerFilesize">
+                            <asp:Label ID="lblFileSize" runat="server" Text='<%#"File Size" + " " + " : " + " " + DataBinder.Eval(Container.DataItem, "Image.FileSize") %>'></asp:Label>
+                        </div>
                         <div id="containerYourComment">
                             <asp:Label ID="lblYourComment" runat="server" Text="Your Comment"></asp:Label>
                         </div>
@@ -37,7 +47,7 @@
                         <div id="containerLinkToEditComment">
                             <a href="EditComment.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "Comment.ID") %>">Edit Comment</a>
                         </div>
-                        <asp:Button runat="server" Text="Delete image" CommandName="Delete" ID="btnDeleteImageAndComment"  OnClientClick="javascript:if(!confirm('Delete this image?'))return false;"  CommandArgument='<%#Eval("Image.ID") %>'></asp:Button>
+                        <asp:Button runat="server" Text="Delete image" CommandName="Delete" ID="btnDeleteImageAndComment" OnClientClick="javascript:if(!confirm('Delete this image?'))return false;" CommandArgument='<%#Eval("Image.ID") %>'></asp:Button>
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>
