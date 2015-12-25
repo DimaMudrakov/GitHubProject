@@ -139,7 +139,8 @@ namespace Gallery
             image.CreateTS = DateTime.Now;
             image.BaseName = fplFileUpload.FileName;
             image.UUIDName = UUIDName;
-            image.FileSize = fplFileUpload.FileBytes.Length;    
+            image.FileSize = fplFileUpload.FileBytes.Length;
+            image.Rating = -1;    
 
             context.Image.Add(image);
             context.SaveChanges();

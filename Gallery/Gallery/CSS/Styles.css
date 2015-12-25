@@ -45,7 +45,15 @@
     margin-left: 125pt;
     margin-top: 10pt;
 }
-#containerFilesize{
+
+#containerFilesize {
     float: left;
     margin-left: 22%;
+}
+
+#containerRating {
+    float: left;
+}
+#containerDeleteImage{
+
 }

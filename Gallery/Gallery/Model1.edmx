@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище GalleryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище GalleryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
@@ -24,8 +24,9 @@
           <Property Name="BaseName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="UUIDName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="FileSize" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Comment__ImageID__1BFD2C07">
+        <Association Name="FK__Comment__ImageID__395884C4">
           <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -40,13 +41,12 @@
         <EntityContainer Name="Хранилище GalleryModelContainer">
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comment__ImageID__1BFD2C07" Association="Self.FK__Comment__ImageID__1BFD2C07">
+          <AssociationSet Name="FK__Comment__ImageID__395884C4" Association="Self.FK__Comment__ImageID__395884C4">
             <End Role="Image" EntitySet="Image" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GalleryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -59,22 +59,31 @@
           <Property Name="Imgtext" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ImageSize" Type="Int32" Nullable="false" />
           <Property Name="ImageID" Type="Int32" />
-          <NavigationProperty Name="Image" Relationship="Self.FK__Comment__ImageID__1BFD2C07" FromRole="Comment" ToRole="Image" />
+          <NavigationProperty Name="Image" Relationship="GalleryModel.FK__Comment__ImageID__395884C4" FromRole="Comment" ToRole="Image" />
         </EntityType>
+        <EntityContainer Name="GalleryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comment" EntityType="Self.Comment" />
+          <EntitySet Name="Image" EntityType="GalleryModel.Image" />
+          <AssociationSet Name="FK__Comment__ImageID__395884C4" Association="GalleryModel.FK__Comment__ImageID__395884C4">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CreateTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="BaseName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UUIDName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BaseName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UUIDName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FileSize" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__ImageID__1BFD2C07" FromRole="Image" ToRole="Comment" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="GalleryModel.FK__Comment__ImageID__395884C4" FromRole="Image" ToRole="Comment" />
         </EntityType>
-        <Association Name="FK__Comment__ImageID__1BFD2C07">
-          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
-          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+        <Association Name="FK__Comment__ImageID__395884C4">
+          <End Type="GalleryModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="GalleryModel.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Image">
               <PropertyRef Name="ID" />
@@ -84,14 +93,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GalleryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Comment" EntityType="Self.Comment" />
-          <EntitySet Name="Image" EntityType="Self.Image" />
-          <AssociationSet Name="FK__Comment__ImageID__1BFD2C07" Association="Self.FK__Comment__ImageID__1BFD2C07">
-            <End Role="Image" EntitySet="Image" />
-            <End Role="Comment" EntitySet="Comment" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -112,11 +113,12 @@
           <EntitySetMapping Name="Image">
             <EntityTypeMapping TypeName="GalleryModel.Image">
               <MappingFragment StoreEntitySet="Image">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CreateTS" ColumnName="CreateTS" />
-                <ScalarProperty Name="BaseName" ColumnName="BaseName" />
-                <ScalarProperty Name="UUIDName" ColumnName="UUIDName" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="UUIDName" ColumnName="UUIDName" />
+                <ScalarProperty Name="BaseName" ColumnName="BaseName" />
+                <ScalarProperty Name="CreateTS" ColumnName="CreateTS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

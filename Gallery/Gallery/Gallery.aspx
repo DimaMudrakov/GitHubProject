@@ -47,7 +47,20 @@
                         <div id="containerLinkToEditComment">
                             <a href="EditComment.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "Comment.ID") %>">Edit Comment</a>
                         </div>
-                        <asp:Button runat="server" Text="Delete image" CommandName="Delete" ID="btnDeleteImageAndComment" OnClientClick="javascript:if(!confirm('Delete this image?'))return false;" CommandArgument='<%#Eval("Image.ID") %>'></asp:Button>
+                        <div id="containerDeleteImage">
+                            <asp:Button runat="server" Text="Delete image" CommandName="Delete" ID="btnDeleteImageAndComment" OnClientClick="javascript:if(!confirm('Delete this image?'))return false;" CommandArgument='<%#Eval("Image.ID") %>'></asp:Button>
+                        </div>
+                        <div id="containerRating">
+                            <asp:RadioButtonList runat="server" ID="rblRating" AutoPostBack="true" 
+                                                 OnSelectedIndexChanged="rblRating_SelectedIndexChanged" 
+                                                 RepeatDirection="Horizontal" DataValueField='<%# DataBinder.Eval(Container.DataItem, "Image.ID") %>'>
+                                <asp:ListItem>1</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>5</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>

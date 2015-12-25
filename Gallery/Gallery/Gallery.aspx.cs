@@ -7,17 +7,21 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Entity.Core.Objects;
 using System.Data;
+using System.Data.Entity.Validation;
+using System.Text;
+using System.Diagnostics;
 
 namespace Gallery
 {
     public partial class Gallery : System.Web.UI.Page
     {
+
         protected GalleryEntities context = new GalleryEntities();
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+            {
             if (!IsPostBack)
-            {               
+            {
                 DisplayImage();
             }
 
@@ -26,7 +30,7 @@ namespace Gallery
         {
             GalleryEntities context = this.context;
 
-            if(number == 0)
+            if (number == 0)
             {
                 var resultFromDataBase = (from Image in context.Image
                                           join Comment in context.Comment
@@ -145,8 +149,55 @@ namespace Gallery
             int number = int.Parse(ddlSort.SelectedValue);
             DisplayImage(number);
         }
+
+        protected void rblRating_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RadioButtonList rbl = sender as RadioButtonList;
+
+            string selectedItem = rbl.SelectedValue;
+            int intRating = int.Parse(selectedItem);
+            string selectedID = rbl.DataValueField;
+            int inID = int.Parse(selectedID);
+
+            UpdateImageRating(intRating, inID);
+
+        }
+                                               
+        
+        protected void UpdateImageRating(int intRating, int intID)
+        {
+            try
+            {
+
+                GalleryEntities context = this.context;
+
+                Image image = new Image();
+
+                image.ID = intID;
+                image.Rating = intRating;
+                image.BaseName = "";
+                image.UUIDName = "";
+                
+                context.Image.Attach(image);
+                var entry = context.Entry(image);
+                entry.Property(i => i.Rating).IsModified = true;
+                entry.Property(i => i.ID).IsModified = false;
+                entry.Property(i => i.BaseName).IsModified = false;
+                entry.Property(i => i.UUIDName).IsModified = false;
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Trace.TraceInformation("Property: {0} Error: {1}", validationError.
+                        PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
     }
-
-
 
 }

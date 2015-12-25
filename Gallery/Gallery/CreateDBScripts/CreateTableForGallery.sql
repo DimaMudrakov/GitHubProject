@@ -11,7 +11,8 @@
 							[CreateTS] DATETIME NOT NULL,
 							[BaseName] VARCHAR(255) NOT NULL,
 							[UUIDName] VARCHAR(255) NOT NULL,
-							[FileSize] INT NOT NULL
+							[FileSize] INT NOT NULL,
+							[Rating] INT NOT NULL
                       );
 
 	CREATE TABLE [Comment] ([ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
