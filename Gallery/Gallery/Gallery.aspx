@@ -16,6 +16,8 @@
                 <asp:ListItem Text="descending upload date" Value="1"></asp:ListItem>
                 <asp:ListItem Text="ascending size image" Value="2"></asp:ListItem>
                 <asp:ListItem Text="descending size image" Value="3"></asp:ListItem>
+                <asp:ListItem Text="ascending rating image" Value="4"></asp:ListItem>
+                <asp:ListItem Text="descending rating image" Value="5"></asp:ListItem>
             </asp:DropDownList>
             <asp:Button runat="server" ID="btnSort" Text="sort" OnClick="btnSort_Click" />
             <asp:Repeater runat="server" ID="rptImage" OnItemCommand="rptImage_ItemCommand">

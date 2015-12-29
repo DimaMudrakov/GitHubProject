@@ -19,7 +19,8 @@ namespace Gallery
         protected GalleryEntities context = new GalleryEntities();
 
         protected void Page_Load(object sender, EventArgs e)
-            {
+        {
+
             if (!IsPostBack)
             {
                 DisplayImage();
@@ -41,6 +42,13 @@ namespace Gallery
                 rptImage.DataSource = resultFromDataBase;
 
                 rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
             }
             else if (number == 1)
             {
@@ -53,6 +61,13 @@ namespace Gallery
                 rptImage.DataSource = resultFromDataBase;
 
                 rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
             }
             else if (number == 2)
             {
@@ -65,6 +80,13 @@ namespace Gallery
                 rptImage.DataSource = resultFromDataBase;
 
                 rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
             }
             else if (number == 3)
             {
@@ -77,6 +99,51 @@ namespace Gallery
                 rptImage.DataSource = resultFromDataBase;
 
                 rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
+            }
+            else if (number == 4)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.Rating ascending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
+            }
+            else if (number == 5)
+            {
+                var resultFromDataBase = (from Image in context.Image
+                                          join Comment in context.Comment
+                                          on Image.ID equals Comment.ImageID
+                                          orderby Image.Rating descending
+                                          select new { Image, Comment }).ToArray();
+
+                rptImage.DataSource = resultFromDataBase;
+
+                rptImage.DataBind();
+
+                foreach (var result in resultFromDataBase)
+                {
+                    int id = result.Image.ID;
+                    int rating = result.Image.Rating;
+                    DisplayImageRating(id, rating, rptImage);
+                }
             }
 
         }
@@ -91,8 +158,36 @@ namespace Gallery
                                       select new { Image, Comment }).ToArray();
 
             rptImage.DataSource = resultFromDataBase;
-
             rptImage.DataBind();
+
+            foreach (var result in resultFromDataBase)
+            {
+                int id = result.Image.ID;
+                int rating = result.Image.Rating;
+                DisplayImageRating(id , rating, rptImage);
+            }
+                
+
+        }
+        public void DisplayImageRating(int id , int rating, Repeater rptImage)
+        {
+                foreach (RepeaterItem item in rptImage.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        var rbl = (RadioButtonList)item.FindControl("rblRating");
+
+                        string stringID = Convert.ToString(id);
+                        string stringRating = Convert.ToString(rating);
+
+                        if (stringID == rbl.DataValueField)
+                        {
+                            rbl.SelectedValue = stringRating;
+                        }
+                    }
+                }
+            
+
         }
 
         protected void rptImage_ItemCommand(object source, RepeaterCommandEventArgs e)
