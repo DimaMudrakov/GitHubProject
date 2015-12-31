@@ -4,11 +4,9 @@
     float: left;
     width: 48%;
     margin-left: 10pt;
+    border-radius: 7px;
 }
 
-#imageID {
-    margin-left: 50pt;
-}
 
 #containerImage {
     float: left;
@@ -16,22 +14,25 @@
 
 #commentImageId {
     display: inline-block;
-    margin-left: 100pt;
+    margin-left: 29%;
 }
 
 #containerComment {
     display: inline-block;
-    float: left;
-    margin-top: 10pt;
-    margin-left: 115pt;
-    border: 1px solid blue;
-    width: 20%;
-    text-align: center;
-    height: 100%;
+    margin-top: 4pt;
+    margin-left: 70pt;
+    border: 1px solid #00FFFF;
+    width: 190pt;
+    height: 60pt;
+    overflow: auto;
+    word-break: break-all;
 }
 
 #containerLinhGoBack {
     float: left;
+    margin-top: 10pt;
+    margin-left: 10pt;
+    margin-bottom: 10pt;
 }
 
 #contanierUploadedDate {
@@ -53,7 +54,75 @@
 
 #containerRating {
     float: left;
+    margin-left: 75pt;
+    margin-top: 6pt;
 }
-#containerDeleteImage{
 
+#containerDeleteImage {
+    float: right;
+    margin-right: 38pt;
+}
+
+#ddlSort {
+    margin-left: 43%;
+    height: 29pt;
+    font-size: 12pt;
+    background-color: #19C88D;
+    color: white;
+    border-radius: 6px;
+    font-weight: bolder;
+}
+
+#btnSort {
+    background-color: #19C88D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 16pt;
+    cursor: pointer;
+}
+
+    #btnSort:hover {
+        background: rgb(53, 167, 110);
+    }
+
+#containerLinkToEditComment {
+    float: left;
+    margin-left: 12%;
+}
+
+#linkEditComment {
+    text-decoration: none;
+    color: #19C88D;
+    font-weight: bolder;
+    font-size: 13pt;
+}
+
+    #linkEditComment:hover {
+        transition: 1s linear;
+        background-position: -600px -550px;
+        transform: rotate(360deg);
+    }
+
+.containerTextRatingImage {
+    float: right;
+    margin-top: 4pt;
+}
+
+#rptImage_hplToFileUpload {
+    text-decoration: none;
+    color: #19C88D;
+    font-weight: bolder;
+    font-size: 13pt;
+}
+
+    #rptImage_hplToFileUpload:hover {
+        transition: 1s linear;
+        background-position: -600px -550px;
+        transform: rotate(360deg);
+    }
+
+.clearBoth {
+    clear: both;
 }
