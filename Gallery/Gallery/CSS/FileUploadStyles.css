@@ -1,0 +1,10 @@
+﻿.containerFileUpload {
+    width: 200pt;
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+#fplFileUpload {
+    margin-left: 100pt;
+    cursor: pointer;
+}

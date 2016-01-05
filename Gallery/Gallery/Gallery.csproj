@@ -81,9 +81,14 @@
     <Content Include="CreateDBScripts\CreateDBGallery.sql" />
     <Content Include="CreateDBScripts\CreateTableForGallery.sql" />
     <Content Include="CSS\Styles.css" />
+    <Content Include="CSS\FileUploadStyles.css" />
     <Content Include="EditComment.aspx" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Gallery.aspx" />
+    <Content Include="JS\script.js" />
+    <Content Include="Lib\Bootstrap\CSS\bootstrap.min.css" />
+    <Content Include="Lib\Bootstrap\JS\bootstrap.file-input.js" />
+    <Content Include="Lib\Jquery\jquery-1.11.3.min.js" />
     <Content Include="packages.config" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
