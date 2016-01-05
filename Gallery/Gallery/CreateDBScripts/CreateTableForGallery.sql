@@ -6,6 +6,8 @@
 	IF OBJECT_ID(N'dbo.Image', N'U')IS NOT NULL
 	DROP TABLE dbo.[Image];
 
+	IF OBJECT_ID(N'dbo.Users', N'U')IS NOT NULL
+	DROP TABLE dbo.[Users];
 
 	CREATE TABLE [Image] (	[ID] INT IDENTITY(1,1) NOT NULL  PRIMARY KEY,
 							[CreateTS] DATETIME NOT NULL,
@@ -21,3 +23,10 @@
 							[ImageSize] INT NOT NULL,
 							[ImageID] INT FOREIGN KEY REFERENCES [Image]([ID])
                      );
+	CREATE TABLE [Users] (	[ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+							[Name] VARCHAR(255) NOT NULL,
+							[Password] VARCHAR(255) NOT NULL,
+							[Email] VARCHAR NOT NULL,
+							[CreateTS] DATETIME NOT NULL
+                     );
+
