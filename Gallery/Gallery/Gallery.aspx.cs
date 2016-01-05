@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.Entity.Core.Objects;
 using System.Data;
 using System.Data.Entity.Validation;
-using System.Text;
-using System.Diagnostics;
+
 
 namespace Gallery
 {
@@ -280,6 +275,7 @@ namespace Gallery
                 entry.Property(i => i.BaseName).IsModified = false;
                 entry.Property(i => i.UUIDName).IsModified = false;
                 context.SaveChanges();
+
             }
             catch (DbEntityValidationException dbEx)
             {

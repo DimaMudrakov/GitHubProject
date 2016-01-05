@@ -26,7 +26,8 @@
 	CREATE TABLE [Users] (	[ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 							[Name] VARCHAR(255) NOT NULL,
 							[Password] VARCHAR(255) NOT NULL,
-							[Email] VARCHAR NOT NULL,
-							[CreateTS] DATETIME NOT NULL
+							[Email] VARCHAR(255) NOT NULL,
+							[CreateTS] DATETIME NOT NULL,
+							[Token] VARCHAR(255) NULL
                      );
 

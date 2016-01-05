@@ -2,11 +2,8 @@
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace Gallery
 {
@@ -152,9 +149,7 @@ namespace Gallery
             GalleryEntities context = new GalleryEntities();
 
             Comment comment = new Comment();
-            
-
-           
+          
             comment.CreateTS = DateTime.Now;
             comment.Imgtext = txtComment.Text;
             comment.ImageSize = fplFileUpload.FileBytes.Length;
