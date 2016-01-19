@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PluginCountNumberWords.cs" />
+    <Compile Include="PluginDeleteNumbers.cs" />
+    <Compile Include="PluginLongestWord.cs" />
+    <Compile Include="PluginLowerCase.cs" />
+    <Compile Include="PluginUpperCase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
