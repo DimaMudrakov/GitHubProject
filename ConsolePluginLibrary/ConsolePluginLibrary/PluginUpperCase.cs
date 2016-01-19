@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsolePluginLibrary
 {
-    class PluginUpperCase<T>
+    class PluginUpperCase<T> where T : class
     {
-
-        T obj;
+        T obj ;
 
         public PluginUpperCase(T obj)
         {

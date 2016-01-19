@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsolePluginLibrary
 {
@@ -22,9 +23,7 @@ namespace ConsolePluginLibrary
         public string Modify(string param)
 
         {
-
             return param.ToLower();
-
         }
     }
 }

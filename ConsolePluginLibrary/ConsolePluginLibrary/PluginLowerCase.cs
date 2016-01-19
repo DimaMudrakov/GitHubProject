@@ -16,5 +16,13 @@ namespace ConsolePluginLibrary
             string stringLowerCase = stringWithWords.ToLower();
             return stringLowerCase;
         }
+
+        public string Modify(string param)
+
+        {
+
+            return param.ToLower();
+
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ConsolePluginLibrary
         }
         public T Modify(T param)
         {
-           return param.ToLower();
+           return param;
         }
     }
 }
