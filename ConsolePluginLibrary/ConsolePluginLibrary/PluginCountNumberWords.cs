@@ -2,8 +2,15 @@
 
 namespace ConsolePluginLibrary
 {
-    class PluginCountNumberWords<T1>
+    class PluginCountNumberWords<T>
     {
+        T obj;
+
+        public PluginCountNumberWords(T obj)
+        {
+            this.obj = obj;
+        }
+
         public int CountNumberWords(string stringWithWords)
         {
             stringWithWords = stringWithWords.Trim(new char[] { ',', '.' });
@@ -11,6 +18,13 @@ namespace ConsolePluginLibrary
 
             int countNumberWords = arrayWithWords.Length;
             return countNumberWords;
+        }
+        public string Modify(string param)
+
+        {
+
+            return param.ToLower();
+
         }
     }
 }

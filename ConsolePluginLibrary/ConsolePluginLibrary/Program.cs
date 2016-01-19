@@ -6,11 +6,11 @@ namespace ConsolePluginLibrary
     {
         static void Main(string[] args)
         {
-            PluginCountNumberWords<string> count = new PluginCountNumberWords<string>();
-            PluginLongestWord<string> longest = new PluginLongestWord<string>();
-            PluginUpperCase<string> upperCase = new PluginUpperCase<string>();
-            PluginLowerCase<string> lowerCase = new PluginLowerCase<string>();
-            PluginDeleteNumbers<string> deleteNumber = new PluginDeleteNumbers<string>();
+            PluginCountNumberWords<string> count = new PluginCountNumberWords<string>("");
+            PluginLongestWord<string> longest = new PluginLongestWord<string>("");
+            PluginUpperCase<string> upperCase = new PluginUpperCase<string>("");
+            PluginLowerCase<string> lowerCase = new PluginLowerCase<string>("");
+            PluginDeleteNumbers<string> deleteNumber = new PluginDeleteNumbers<string>("");
 
             Console.Write("Write some text: ");
             string stringWithWords = Console.ReadLine();

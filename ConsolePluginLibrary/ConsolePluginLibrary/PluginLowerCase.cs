@@ -2,8 +2,15 @@
 
 namespace ConsolePluginLibrary
 {
-    class PluginLowerCase<T1>
+    class PluginLowerCase<T>
     {
+        T obj;
+
+        public PluginLowerCase(T obj)
+        {
+            this.obj = obj;
+        }
+
         public string ConvertStringToLowerCase(string stringWithWords)
         {
             string stringLowerCase = stringWithWords.ToLower();
