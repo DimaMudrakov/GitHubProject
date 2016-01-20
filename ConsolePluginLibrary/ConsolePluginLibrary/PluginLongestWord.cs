@@ -4,12 +4,6 @@ namespace ConsolePluginLibrary
 {
     class PluginLongestWord<T>
     {
-        T obj;
-
-        public PluginLongestWord(T obj)
-        {
-            this.obj = obj;
-        }
         public string LongestWord(string stringWithWords)
         {
             string longestWord = "";

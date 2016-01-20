@@ -4,15 +4,19 @@ using System.Collections.Generic;
 
 namespace ConsolePluginLibrary
 {
-    class CollectionPlugins<T> where T : class
+    class CollectionPlugins<T>
     {
 
-        public List<T>GetCollectionPlugins()
+        public List<object> GetCollectionPlugins()
         {
 
-            List<T> collection = new List<T>();
+            PluginCountNumberWords<object> countNumberWords = new PluginCountNumberWords<object>();
+            PluginDeleteNumbers<object> deleteNumbers = new PluginDeleteNumbers<object>();
+            PluginLongestWord<object> longestWord = new PluginLongestWord<object>();
+            PluginLowerCase<object> lowerCase = new PluginLowerCase<object>();
+            PluginUpperCase<object> upperCase = new PluginUpperCase<object>();
 
-            collection.Add(PluginUpperCase<T>);
+            List<object> collection = new List<object> {countNumberWords, deleteNumbers, longestWord, lowerCase, upperCase};
 
             return collection;
 
