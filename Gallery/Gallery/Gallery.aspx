@@ -7,6 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gallery</title>
     <link href="CSS/Styles.css" rel="stylesheet" />
+    <script src="Lib/Jquery/jquery-1.11.3.min.js"></script>
+    <script src="JS/GalleryJS.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

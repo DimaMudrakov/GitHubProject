@@ -85,6 +85,7 @@
     <Content Include="EditComment.aspx" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Gallery.aspx" />
+    <Content Include="JS\GalleryJS.js" />
     <Content Include="JS\script.js" />
     <Content Include="Lib\Bootstrap\CSS\bootstrap.min.css" />
     <Content Include="Lib\Bootstrap\JS\bootstrap.file-input.js" />
